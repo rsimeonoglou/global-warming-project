@@ -26,7 +26,7 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="{{ url_for('index') }}">
+                <a class="nav-link" href="{{ url_for('index') }}">
                   <h5>Summary Dashboard</h5>
                 </a>
               </li>
@@ -55,9 +55,20 @@
                 <script src="/static/js/dropdown-script.js" ></script>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('Causes') }}">
-                  <h5>Causes Analysis</h5>
-                </a>
+                <button class="nav-link active">Prediction Analysis
+                  <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                  <a class="nav-link" href="globalpred.html">
+                    <h6>Global Prediction</h6></a>
+                  <a class="nav-link" href="countrypred.html">
+                    <h6>Country Prediction</h6></a>
+                  <a class="nav-link" href="poppred.html">
+                    <h6>Population Prediction</h6></a>
+                  <a class="nav-link" href="co2pred.html">
+                    <h6>C02 Prediction</h6></a>
+                </div>
+                <script src="dropdown-script.js" ></script>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('help') }}">

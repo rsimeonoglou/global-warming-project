@@ -4,28 +4,28 @@ from flask import Flask, jsonify, request, url_for, redirect, render_template, B
 
 # Dependencies and Setup
 import numpy as np
-import datetime as dt
 import json
 import pandas as pd
-# import numpy as np
-# from sqlalchemy.pool import StaticPool
 
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 
+import pickle
+
+
 #################################################
 # Database Setup
 #################################################
-engine = create_engine('postgresql://postgres:{}@localhost:5432/Global-Warming')
+engine = create_engine('postgresql://postgres:Aadhya2014@localhost:5432/Global-Warming')
 conn = engine.connect()
+
 
 #################################################
 # Flask Setup
 #################################################
 app = Flask(__name__)
-
 
 
 
@@ -121,6 +121,8 @@ def Global():
     # show the form, it wasn't submitted
     return render_template('Global.html')
 
+# ==============================================================
+
 @app.route('/Country', methods=['GET', 'POST'])
 def Country():
     if request.method == 'POST':
@@ -133,17 +135,91 @@ def Country():
     # show the form, it wasn't submitted
     return render_template('Country.html')    
 
-@app.route('/Causes', methods=['GET', 'POST'])
-def Causes():
-    if request.method == 'POST':
-        # do stuff when the form is submitted
+# ==============================================================
 
-        # redirect to end the POST handling
-        # the redirect can be to the same route or somewhere else
-        return redirect(url_for('Causes'))
+@app.route('/global-temp-predict', methods=['GET', 'POST'])
+def PredictTemp():
+    try:
+        if request.method == 'POST':
+            int_features = [x for x in request.form.values()]
+            if len(int_features) > 0 :
+                model = pickle.load(open('../models/global/surfacetemperature.pkl', 'rb'))
+                int_features = int(int_features[0])
+                final_features = [[int_features]]
+                prediction = model.predict(final_features)
+                output = prediction[0]
+                return render_template('/global-temp-prediction.html', prediction_text='Global-Temperature Prediction for {} is:  {}'.format(int_features, round(output[0], 3)))
+    except Exception as e: 
+        print(e)    
 
-    # show the form, it wasn't submitted
-    return render_template('Causes.html')  
+    return render_template('/global-temp-prediction.html', prediction_text='')
+
+
+# ==============================================================
+
+@app.route('/co2-predict', methods=['GET', 'POST'])
+def Predictco2():
+    try:
+        if request.method == 'POST':
+            int_features = [x for x in request.form.values()]
+            if len(int_features) > 0 :
+                model = pickle.load(open('../models/global/co2.pkl', 'rb'))
+                int_features = int(int_features[0])
+                final_features = [[int_features]]
+                prediction = model.predict(final_features)
+                output = prediction[0]
+                return render_template('/co2-prediction.html', prediction_text='Co2 Prediction for {} is:  {}'.format(int_features, round(output[0], 3)))
+    except Exception as e: 
+        print(e)    
+
+    return render_template('/co2-prediction.html', prediction_text='')
+
+# ==============================================================
+
+@app.route('/country-predict', methods=['GET', 'POST'])
+def PredictCountry():
+    try:
+        if request.method == 'POST':
+            int_features = [x for x in request.form.values()]
+            if len(int_features) > 0 :
+                country = int_features[0]
+                model = pickle.load(open('../models/temperature/{}.pkl'.format(country), 'rb'))
+                int_features = int(int_features[1])
+                final_features = [[int_features]]
+                prediction = model.predict(final_features)
+                output = prediction[0]
+                return render_template('country-prediction.html', prediction_text="Temperature Prediction for '{}' in year '{}' is: {}".format(country, int_features, round(output[0], 3)))
+    except Exception as e: 
+        print(e)    
+
+    return render_template('country-prediction.html', prediction_text='')
+
+
+# ==============================================================
+
+@app.route('/population-predict', methods=['GET', 'POST'])
+def PredictPopulation():
+    try:
+        if request.method == 'POST':
+            int_features = [x for x in request.form.values()]
+            if len(int_features) > 0 :
+                country = int_features[0]
+                model = pickle.load(open('../models/population/{}.pkl'.format(country), 'rb'))
+                int_features = int(int_features[1])
+                final_features = [[int_features]]
+                prediction = model.predict(final_features)
+                output = prediction[0]
+                return render_template('population-prediction.html', prediction_text="Population Prediction for '{}' in year '{}' is: {}".format(country, int_features, round(output[0], 3)))
+    except Exception as e: 
+        print(e)    
+
+    return render_template('population-prediction.html', prediction_text='')
+
+
+
+
+# ==============================================================
+
 
 @app.route('/help', methods=['GET', 'POST'])
 def help():
@@ -154,8 +230,11 @@ def help():
         # the redirect can be to the same route or somewhere else
         return redirect(url_for('help'))
 
-    # show the form, it wasn't submitted
+    
     return render_template('help.html', text = "NEED HELP???")
+
+# ==============================================================
+
 
 if __name__ == '__main__':
     app.run(debug=True)

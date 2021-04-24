@@ -97,6 +97,7 @@ resetButton.on("click", function(){
 function init() {
     reloadFilter(appData);
     reloadDataTable(appData);
+    fillCountryDropDown(countries)
 }
 
 // function greenhousegases(){
@@ -167,5 +168,18 @@ function init() {
 
 // };
 // ==============================================================
+var select = document.getElementById("populationCountry");
+countries = ['World', 'Afghanistan', 'Albania', 'Australia', 'Austria','Bahamas', 'Bahrain', 'Bangladesh','Belgium', 'Brazil','British Virgin Islands','Cambodia','Canada', 'Japan','China', 'Colombia', 'Egypt', 'Germany','India','Italy',  'Nepal','Netherlands','New Zealand','North Korea','Pakistan', 'Puerto Rico','Russia', 'Saudi Arabia','South Korea',
+'Singapore','South Africa','Switzerland', 'United Arab Emirates','United Kingdom', 'United States','Vietnam']
+
+function fillCountryDropDown (countries) {
+    countries.forEach((country) => {
+        //add option slot
+        var option = select.append("option");
+        //add subject ID value to slop
+        option.text(country);
+    })
+    
+}
 
 init();

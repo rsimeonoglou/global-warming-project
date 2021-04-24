@@ -44,7 +44,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <button class="dropdown-btn">Data
+                <button class="dropdown-btn  data-drop">Data
                   <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
@@ -55,23 +55,23 @@
                   <a class="nav-link" href="/greenhouse-gases">
                     <h6>Greenhouse Gases</h6></a>
                 </div>
-                <script src="/static/js/dropdown-script.js" ></script>
+                <!-- <script src="/static/js/dropdown-script.js" ></script> -->
               </li>
               <li class="nav-item">
-                <button class="nav-link active">Prediction Analysis
+                <button class="dropdown-btn pred-drop" >Prediction Analysis
                   <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
-                  <a class="nav-link" href="globalpred.html">
+                  <a class="nav-link active" href="/global-temp-predict">
                     <h6>Global Prediction</h6></a>
-                  <a class="nav-link" href="countrypred.html">
+                  <a class="nav-link" href="/country-predict">
                     <h6>Country Prediction</h6></a>
-                  <a class="nav-link" href="poppred.html">
+                  <a class="nav-link" href="/population-predict">
                     <h6>Population Prediction</h6></a>
-                  <a class="nav-link" href="co2pred.html">
-                    <h6>C02 Prediction</h6></a>
+                  <a class="nav-link" href="/co2-predict">
+                    <h6>Co2 Prediction</h6></a>
                 </div>
-                <script src="dropdown-script.js" ></script>
+                <script src="/static/js/dropdown-script.js" ></script>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('help') }}">

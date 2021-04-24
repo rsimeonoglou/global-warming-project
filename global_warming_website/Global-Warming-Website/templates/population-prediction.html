@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <!-- Custom styles for this template -->
+  <link href="../static/css/styles.css" rel="stylesheet">
+  <title>Global Warming</title>
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+</head>
+<body>
+   <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.html">Correlation Coalition </a>
+      <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+      <ul class="navbar-nav px-3">
+      </ul>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('index') }}">
+                  <span data-feather="home">
+                    <h5>Summary Dashboard</h5>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('Global') }}">
+                  <h5>Global Analysis</h5>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('Country') }}">
+                  <h5>Country Analysis</h5>
+                </a>
+              </li>
+              <li class="nav-item">
+                <button class="dropdown-btn  data-drop">Data
+                  <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                  <a class="nav-link", href="/global-surface-temperature">
+                    <h6>Global Surface Temperatures</h6></a>
+                  <a class="nav-link" href="/population-by-country">
+                    <h6>Population by Country</h6></a>
+                  <a class="nav-link" href="/greenhouse-gases">
+                    <h6>Greenhouse Gases</h6></a>
+                </div>
+                <!-- <script src="/static/js/dropdown-script.js" ></script> -->
+              </li>
+              <li class="nav-item">
+                <button class="dropdown-btn pred-drop" >Prediction Analysis
+                  <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                  <a class="nav-link active" href="/global-temp-predict">
+                    <h6>Global Prediction</h6></a>
+                  <a class="nav-link" href="/country-predict">
+                    <h6>Country Prediction</h6></a>
+                  <a class="nav-link" href="/population-predict">
+                    <h6>Population Prediction</h6></a>
+                  <a class="nav-link" href="/co2-predict">
+                    <h6>Co2 Prediction</h6></a>
+                </div>
+                <script src="/static/js/dropdown-script.js" ></script>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('help') }}">
+                  <h5>Need Help?</h5>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        
+        <main id="fix-overflow" role="main" class="col-md-10 ml-sm-auto pt-3 px-3">
+          <div class="d-flex justify-content-between pb-2 mb-3 border-bottom">
+            <h1> Population Predictions - Country Level </h1>
+          </div>
+          <div>
+            <form class="form-inline" role="form" method="POST">
+              <div class="form-group form-group-lg pr-xl-5"> 
+              <select name="country" id="populationCountry"><option disabled selected value>Select Country</option>
+              </select>
+              <input type="text" id='inputyear' name="year" size="14" placeholder="Enter a year" required="required" />
+              <input type="submit" class="btn btn-lg btn-primary" value="Predict"/>
+              </div>
+             </form>
+          </div>
+          <br>
+          <h3>{{ prediction_text }}</h3>
+
+          
+          <div class="chart">
+            <!-- Placeholder for plotting -->
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="../static/js/predictController.js"></script>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+</html>

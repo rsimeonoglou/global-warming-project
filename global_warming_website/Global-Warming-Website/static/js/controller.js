@@ -97,8 +97,8 @@ resetButton.on("click", function(){
 function init() {
     reloadFilter(appData);
     reloadDataTable(appData);
-    fillCountryDropDown(countries)
-}
+    // fillCountryDropDown(countries)
+};
 
 // function greenhousegases(){
 //     
@@ -112,20 +112,6 @@ function init() {
 //         plotCharts(ghg);
 //         });
 // }
-
-
-// function comparisions(){
-// // d3.json("/api/v1.0/comparisions", function(data)
-//      d3.json("/api/v1.0/comparisions").then((data) => {
-//         d3.event.preventDefault()
-//         var vyears = data.Year
-//         console.log(data);
-//         refreshdash();
-//         reloadFilteryears(data);
-//         resetTables(data); //Empty the table element and render atleast 4 analysis charts
-//         plotCharts(data);
-//         });
-//     }
 
 
 // function charts(data){
@@ -168,18 +154,18 @@ function init() {
 
 // };
 // ==============================================================
-var select = document.getElementById("populationCountry");
-countries = ['World', 'Afghanistan', 'Albania', 'Australia', 'Austria','Bahamas', 'Bahrain', 'Bangladesh','Belgium', 'Brazil','British Virgin Islands','Cambodia','Canada', 'Japan','China', 'Colombia', 'Egypt', 'Germany','India','Italy',  'Nepal','Netherlands','New Zealand','North Korea','Pakistan', 'Puerto Rico','Russia', 'Saudi Arabia','South Korea',
-'Singapore','South Africa','Switzerland', 'United Arab Emirates','United Kingdom', 'United States','Vietnam']
+// var select = document.getElementById("populationCountry");
+// countries = ['World', 'Afghanistan', 'Albania', 'Australia', 'Austria','Bahamas', 'Bahrain', 'Bangladesh','Belgium', 'Brazil','British Virgin Islands','Cambodia','Canada', 'Japan','China', 'Colombia', 'Egypt', 'Germany','India','Italy',  'Nepal','Netherlands','New Zealand','North Korea','Pakistan', 'Puerto Rico','Russia', 'Saudi Arabia','South Korea',
+// 'Singapore','South Africa','Switzerland', 'United Arab Emirates','United Kingdom', 'United States','Vietnam']
 
-function fillCountryDropDown (countries) {
-    countries.forEach((country) => {
-        //add option slot
-        var option = select.append("option");
-        //add subject ID value to slop
-        option.text(country);
-    })
+// function fillCountryDropDown (countries) {
+//     countries.forEach((country) => {
+//         //add option slot
+//         var option = select.append("option");
+//         //add subject ID value to slop
+//         option.text(country);
+//     })
     
-}
+// }
 
 init();

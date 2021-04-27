@@ -18,7 +18,7 @@ import pickle
 #################################################
 # Database Setup
 #################################################
-engine = create_engine('postgresql://postgres:{}@localhost:5432/Global-Warming')
+engine = create_engine('postgresql://postgres:Aadhya2014@localhost:5432/Global-Warming')
 conn = engine.connect()
 
 

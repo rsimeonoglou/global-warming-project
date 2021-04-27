@@ -10,7 +10,7 @@ function init(){
 }
 
 
-function fillCountryDropDown1(countries) {
+function fillCountryDropDown(countries) {
     countries.forEach((country) => {
         //add option slot
         var option = countrySelect.append("option");

@@ -10,10 +10,11 @@
   <link href="../static/css/styles.css" rel="stylesheet">
   <title>Global Warming</title>
   <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
 </head>
 <body>
    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.html">Correlation Coalition </a>
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ url_for('index') }}">GLOBAL WARMING ? </a>
       <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
       <ul class="navbar-nav px-3">
       </ul>
@@ -95,16 +96,27 @@
           </div>
           <br>
           <h3>{{ prediction_text }}</h3>
-
-          
-          <div class="chart">
-            <!-- Placeholder for plotting -->
+          <br>
+          <br>
+          <br>
+          <div id="vizContainer3" class="col-md-12">
+            
           </div>
-        </main>
+          <br><br>
+          <br>
+            <p><h4>Population Map:</h4><br>
+              <h5>
+              The above visualization is an interactive map that projects population growth over time. Utilizing machine learning, past data on population was used to train a model, and then in turn project what future population growth could be per country. The map above starts every country at the same level, taking the 2015 population by country as a baseline to visualize growth. As you click through the increments of 5 years, you can see the percent growth of each country. 
+              <br><br>
+              By hovering over each country, you will also be able to find other details of each country, which includes country name, the year you are currently displaying, the percent change, the population number that has been predicted (in thousands), and the running total increase of population (starting at 0 for 2015).
+            </h5></p>
+         <br>
+          </main>
       </div>
     </div>
     <script src="../static/js/predictController.js"></script>
-
+    <script src="../static/js/tableauPopulation.js"></script>
+    
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </html>

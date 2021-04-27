@@ -10,10 +10,11 @@
   <link href="../static/css/styles.css" rel="stylesheet">
   <title>Global Warming</title>
   <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
 </head>
 <body>
    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.html">Correlation Coalition </a>
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.html">GLOBAL WARMING ? </a>
       <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
       <ul class="navbar-nav px-3">
       </ul>
@@ -81,7 +82,7 @@
 
         <main id="fix-overflow" role="main" class="col-md-10 ml-sm-auto pt-3 px-3">
           <div class="d-flex justify-content-between pb-2 mb-3 border-bottom">
-            <h1>Global Predictions </h1>
+            <h1>Global Temperature Predictions </h1>
           </div>
           <div>
             <form class="form-inline" role="form" method="POST">
@@ -93,10 +94,25 @@
             </div>
             <br>
             <h3>{{ prediction_text }}</h3>
+            <br>
+            <br>
+            <br>
+            <div id="vizContainer3" class="col-md-9">
+            </div>
+            <br><br>
+            <br>
+            <p><h4>Global:</h4><br>
+              <h5>
+                The above graph illustrate present, past, and future outlook on the global temperature changes between the years 1900 and 2100. To further prove that we believe in global warming, using the known data, we've created a prediction which supports our theory that global surface temperatures will steadily climb through later years. 
+              <br><br>
+              You can see the line in blue represents historical data and the line in red depicts the climb in later years based off of previous data.
+            </h5></p>
         </main>
       </div>
     </div>
-    <script src="../static/js/predictController.js"></script>
+    <!-- <script src="../static/js/predictController.js"></script> -->
+    <script src="../static/js/tableauGlobalTemp.js"></script>
+    
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>

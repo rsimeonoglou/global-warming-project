@@ -18,7 +18,7 @@ import pickle
 #################################################
 # Database Setup
 #################################################
-engine = create_engine('postgresql://postgres:Aadhya2014@localhost:5432/Global-Warming')
+engine = create_engine('postgresql://postgres:{}@localhost:5432/Global-Warming')
 conn = engine.connect()
 
 
@@ -148,7 +148,7 @@ def PredictTemp():
                 final_features = [[int_features]]
                 prediction = model.predict(final_features)
                 output = prediction[0]
-                return render_template('/global-temp-prediction.html', prediction_text='Global-Temperature Prediction for {} is:  {}'.format(int_features, round(output[0], 3)))
+                return render_template('/global-temp-prediction.html', prediction_text='Global-Temperature Prediction for {} is: "{} Farenheit"'.format(int_features, round(output[0], 3)))
     except Exception as e: 
         print(e)    
 
@@ -168,7 +168,7 @@ def Predictco2():
                 final_features = [[int_features]]
                 prediction = model.predict(final_features)
                 output = prediction[0]
-                return render_template('/co2-prediction.html', prediction_text='Co2 Prediction for {} is:  {}'.format(int_features, round(output[0], 3)))
+                return render_template('/co2-prediction.html', prediction_text='Co2 Prediction for {} is: "{}  million tonnes"'.format(int_features, round(output[0], 3)))
     except Exception as e: 
         print(e)    
 
@@ -188,7 +188,7 @@ def PredictCountry():
                 final_features = [[int_features]]
                 prediction = model.predict(final_features)
                 output = prediction[0]
-                return render_template('country-prediction.html', prediction_text="Temperature Prediction for '{}' in year '{}' is: {}".format(country, int_features, round(output[0], 3)))
+                return render_template('country-prediction.html', prediction_text='Temperature Prediction for {} in year {} is: "{} Farenheit"'.format(country, int_features, round(output[0], 3)))
     except Exception as e: 
         print(e)    
 
@@ -209,7 +209,7 @@ def PredictPopulation():
                 final_features = [[int_features]]
                 prediction = model.predict(final_features)
                 output = prediction[0]
-                return render_template('population-prediction.html', prediction_text="Population Prediction for '{}' in year '{}' is: {}".format(country, int_features, round(output[0], 3)))
+                return render_template('population-prediction.html', prediction_text='Population Prediction for {} in year {} is: "{} thousand"'.format(country, int_features, round(output[0], 3)))
     except Exception as e: 
         print(e)    
 

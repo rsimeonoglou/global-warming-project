@@ -47,10 +47,12 @@ function reloadFilter(data){
     yearendselect.html("");
     // use a forEach to loop over each year in the array data.Year to populate dropdowns with years
     for(var i=0; i<data.years.length; i++){
-        var option1 = yearstartselect.append("option");
-        option1.text(data.years[i]);
-        var option2 = yearendselect.append("option");
-        option2.text(data.years[data.years.length -1 -i]).attr("value",data.years[data.years.length- 1- i]);      
+        if(data.years[i]<2021) {
+            var option1 = yearstartselect.append("option");
+            option1.text(data.years[i]);
+            var option2 = yearendselect.append("option");
+            option2.text(data.years[data.years.length -1 -i]).attr("value",data.years[data.years.length- 1- i]); 
+        }      
     }
 }; 
     

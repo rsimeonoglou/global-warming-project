@@ -1,5 +1,6 @@
 body {
     font-size: .875rem;
+    /* max-height:fit-content; */
     
   }
   
@@ -75,7 +76,7 @@ body {
   .navbar-brand {
     padding-top: .75rem;
     padding-bottom: .75rem;
-    font-size: 1rem;
+    font-size: 2rem;
     background-color: rgba(0, 0, 0, .25);
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
     text-align: center;
@@ -129,24 +130,37 @@ body {
       color: black;
   }
   
-  .divScroll {
+  /* .divScroll {
     overflow:scroll;
     height:400px;
-    width:1350px;
+    width:1000px;
+  } */
+
+  #vizContainer1 {
+
+    height:900px;
+
+  }
+
+  #vizContainer2 {
+
+    height:900px;
+    
+
   }
 
   #table-area {
-    height:800px;
-    width:530px;
+    height:840px;
+    width:540px;
 
 
 
   }
 
-  #plotly-div {
+  /* #plotly-div {
     height: 350px;
     width: 100%;
-  }
+  } */
 
   .leftpane {
       width: 33%;
